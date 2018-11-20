@@ -1,5 +1,7 @@
 package recommendify;
 
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,7 @@ public class LoginController {
     private TextField idText;
     @FXML
     private TextField secretText;
+
 
     public void pressLoadConfigBtn(ActionEvent e) throws IOException {
         System.out.println("Loading config...");
