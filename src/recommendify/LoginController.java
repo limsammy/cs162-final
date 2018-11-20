@@ -31,17 +31,8 @@ public class LoginController {
     private TextField idText;
     @FXML
     private TextField secretText;
-    @FXML
-    private WebView webView;
 
-    @FXML
-    private void initialize()
-    {
-        WebEngine engine = webView.getEngine();
-        engine.load(spotify.getAuthUri());
-    }
-
-    public void pressAuthBtn(ActionEvent e) throws Exception {
+    public void pressLoginBtn(ActionEvent e) throws Exception {
         System.out.println("Opening authorization WebView...");
         renderWebView();
     }
@@ -90,8 +81,6 @@ public class LoginController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Login");
         stage.setScene(new Scene(root1));
         stage.show();
