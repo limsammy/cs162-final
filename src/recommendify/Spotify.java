@@ -15,18 +15,18 @@ public class Spotify {
 
     public Spotify() {
         // load config file into memory
-        try {
-            loadProperties();
-        } catch (IOException ex) {
-            System.out.println("The config.properties file does not exist, default properties loaded.");
-        }
-
-        // set instance variables
-        this.clientId = configProps.getProperty("clientId");
-        this.clientSecret = configProps.getProperty("clientSecret");
+//        try {
+//            loadProperties();
+//        } catch (IOException ex) {
+//            System.out.println("The config.properties file does not exist, default properties loaded.");
+//        }
+//
+//        // set instance variables
+//        this.clientId = configProps.getProperty("clientId");
+//        this.clientSecret = configProps.getProperty("clientSecret");
     }
 
-    private static void loadProperties() throws IOException {
+    public static void loadProperties() throws IOException {
         Properties defaultProps = new Properties();
 
         // set default properties
