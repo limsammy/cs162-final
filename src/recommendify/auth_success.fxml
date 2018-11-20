@@ -32,7 +32,7 @@
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <padding>
@@ -63,7 +63,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label fx:id="followerCt" prefHeight="13.0" prefWidth="121.0" text="Undefined">
                      <font>
@@ -75,18 +75,9 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <children>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="66.0" text="# of Followers:" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="66.0" text="# of Saved Albums:" textAlignment="CENTER" wrapText="true">
+                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="66.0" text="# of Followers:" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -98,9 +89,9 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <Label fx:id="albumCt" prefHeight="13.0" prefWidth="121.0" text="Undefined">
+                  <Label fx:id="playlistCt" prefHeight="13.0" prefWidth="121.0" text="Undefined">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -110,9 +101,18 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="playlistCt" prefHeight="13.0" prefWidth="121.0" text="Undefined">
+                  <Label alignment="CENTER" text="Email:" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="email" prefHeight="13.0" prefWidth="121.0" text="Undefined">
                      <font>
                         <Font size="10.0" />
                      </font>
