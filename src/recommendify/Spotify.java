@@ -9,9 +9,8 @@ import java.util.Properties;
 public class Spotify {
     private static File configFile = new File("config.properties");
     private static Properties configProps;
-
-    private static final String clientId;
-    private static final String clientSecret;
+    private static final String clientId = new String();
+    private static final String clientSecret = new String();
 
     public Spotify() {
         // load config file into memory
