@@ -67,7 +67,7 @@
                </padding>
                <children>
                   <Label text="Click Button to Open Authentication Page" />
-                  <Button mnemonicParsing="false" text="Login" />
+                  <Button mnemonicParsing="false" onAction="#pressLoginBtn" text="Login" />
                </children>
             </VBox>
          </center>
