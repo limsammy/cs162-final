@@ -1,7 +1,5 @@
 package recommendify;
 
-import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
-import com.sun.javafx.application.HostServicesDelegate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,7 +31,20 @@ public class LoginController {
     private TextField idText;
     @FXML
     private TextField secretText;
+    @FXML
+    private WebView webView;
 
+    @FXML
+    private void initialize()
+    {
+        WebEngine engine = webView.getEngine();
+        engine.load(spotify.getAuthUri());
+    }
+
+    public void pressAuthBtn(ActionEvent e) throws Exception {
+        System.out.println("Opening authorization WebView...");
+        renderWebView();
+    }
 
     public void pressLoadConfigBtn(ActionEvent e) throws IOException {
         System.out.println("Loading config...");
@@ -69,6 +82,17 @@ public class LoginController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Set API Keys Here");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    private void renderWebView() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("webview.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Login");
         stage.setScene(new Scene(root1));
         stage.show();
     }
