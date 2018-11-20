@@ -4,13 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.util.HashMap;
+
 public class AuthSuccessController {
+    private Spotify spotify;
+
     @FXML
     private Label username;
     @FXML
-    private Label followerCt;
-    @FXML
-    private Label albumCt;
+    private Label email;
     @FXML
     private Label playlistCt;
     @FXML
@@ -20,11 +22,12 @@ public class AuthSuccessController {
 
     @FXML
     private void initialize() {
-        username.setText();
-        trackCt.setText();
-        albumCt.setText();
-        playlistCt.setText();
-        currentTrack.setText();
-        playBtn.setText();
+        HashMap<String, String> user_data = spotify.parseUserData();
+
+        username.setText(user_data.get("username"));
+        email.setText(user_data.get("email"));
+        playlistCt.setText(user_data.get("playlist_count"));
+//        currentTrack.setText();
+//        playBtn.setText();
     }
 }

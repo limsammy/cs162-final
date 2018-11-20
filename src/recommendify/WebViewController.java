@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WebViewController {
-    private Spotify spotifyApi = new Spotify();
+    private Spotify spotify = new Spotify();
 
     @FXML
     private WebView loginView;
@@ -23,33 +23,29 @@ public class WebViewController {
     private void initialize()
     {
         WebEngine engine = loginView.getEngine();
-        engine.load(spotifyApi.getAuthUri());
+        engine.load(spotify.getAuthUri());
     }
 
     public void pressFinishBtn(ActionEvent e) {
         String url = loginView.getEngine().getLocation();
         String code = getQueryCode(url);
-        spotifyApi.requestAuth(code);
-        spotifyApi.getAccessToken();
+        spotify.requestAuth(code);
+        spotify.getAccessToken();
         System.out.println("Got access token: " + code);
         System.out.println("Closing login window...");
         ((Button)e.getTarget()).getScene().getWindow().hide();
         try {
             System.out.println("Rendering Succesful Login Window...");
-            renderLoginSuccess(e, spotifyApi);
+            renderLoginSuccess(e);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    private void renderLoginSuccess(ActionEvent event, Spotify spotifyApi) throws IOException {
+    private void renderLoginSuccess(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         Parent loginSuccessParent = loader.load(getClass().getResource("auth_success.fxml"));
         Scene loginSuccessScene = new Scene(loginSuccessParent);
-
-        // pass spotify object to next controller to maintain state
-        AuthSuccessController asc = loader.getController();
-        asc.setSpotifyApi(spotifyApi);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 
