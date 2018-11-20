@@ -2,6 +2,9 @@ package recommendify;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
+import com.wrapper.spotify.exceptions.SpotifyWebApiException;
+import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
 import java.io.*;
@@ -15,8 +18,8 @@ public class Spotify {
     private static final URI redirectUri = SpotifyHttpManager.makeUri("http://www.movemypaper.com/images/sucess.png");
 
     private static SpotifyApi spotifyApi;
-
     private static AuthorizationCodeUriRequest authorizationCodeUriRequest;
+    private static AuthorizationCodeRequest authorizationCodeRequest;
 
     public Spotify() {
         try {
@@ -25,6 +28,25 @@ public class Spotify {
             e.printStackTrace();
         }
         buildApiObjs();
+    }
+
+    public static void getAccessToken() {
+        try {
+            AuthorizationCodeCredentials authorizationCodeCredentials;
+            try {
+                authorizationCodeCredentials = authorizationCodeRequest.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Set access and refresh token for further "spotifyApi" object usage
+            spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
+            spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
+
+            System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
+        } catch (SpotifyWebApiException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private void buildApiObjs() {
@@ -36,6 +58,9 @@ public class Spotify {
 
         authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
                 .show_dialog(true)
+                .build();
+
+        authorizationCodeRequest = spotifyApi.authorizationCode("")
                 .build();
     }
 
