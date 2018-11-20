@@ -26,14 +26,10 @@ public class Spotify {
             .show_dialog(true)
             .build();
 
-    public static void authorizationCodeUri_Sync() {
+    public static String getAuthUri() {
         final URI uri = authorizationCodeUriRequest.execute();
 
-        System.out.println("URI: " + uri.toString());
-    }
-
-    public Spotify() {
-        authorizationCodeUri_Sync();
+        return uri.toString();
     }
 
     public Properties loadProperties() throws IOException {
