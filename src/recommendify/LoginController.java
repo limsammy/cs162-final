@@ -40,11 +40,13 @@ public class LoginController {
             configProps = spotify.loadProperties();
             System.out.println("config.properties file loaded successfully.");
             isLoaded.setText("Loaded.");
+            updateApiLabels();
         } catch (IOException ex) {
             System.out.println("The config.properties file does not exist, default properties loaded. " +
                     "Please set these values now.");
             renderConfigWindow();
             System.out.println("Opened API key configuration window, waiting for user input...");
+            updateApiLabels();
         }
     }
 
@@ -55,6 +57,7 @@ public class LoginController {
             System.out.println("Successfully saved API tokens in file config.properties!");
             ((Button)e.getTarget()).getScene().getWindow().hide();
             System.out.println("Closed modal...");
+            updateApiLabels();
         } catch (IOException ex) {
             System.out.println("Could not save for some unknown reason...");
         }
@@ -69,5 +72,10 @@ public class LoginController {
         stage.setTitle("Set API Keys Here");
         stage.setScene(new Scene(root1));
         stage.show();
+    }
+
+    private void updateApiLabels() {
+        clientId.setText(configProps.getProperty("clientId"));
+        clientSecret.setText(configProps.getProperty("clientSecret"));
     }
 }
