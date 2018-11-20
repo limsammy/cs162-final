@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class Spotify {
-    public static File configFile = new File("config.properties");
+    private static File configFile = new File("config.properties");
     private static Properties configProps;
     private static final String clientId = new String();
     private static final String clientSecret = new String();
@@ -25,7 +25,7 @@ public class Spotify {
 //        this.clientSecret = configProps.getProperty("clientSecret");
     }
 
-    public static Properties loadProperties() throws IOException {
+    public Properties loadProperties() throws IOException {
         Properties defaultProps = new Properties();
 
         // set default properties
