@@ -22,7 +22,7 @@ public class WebViewController {
     public void pressFinishBtn(ActionEvent e) {
         String url = loginView.getEngine().getLocation();
         String code = getQueryCode(url);
-
+        spotify.requestAuth(code);
         spotify.getAccessToken();
         System.out.println("Got access token: " + code);
         System.out.println("Closing login window...");

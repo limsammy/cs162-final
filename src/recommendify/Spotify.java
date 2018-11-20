@@ -30,6 +30,11 @@ public class Spotify {
         buildApiObjs();
     }
 
+    public static void requestAuth(String code) {
+        authorizationCodeRequest = spotifyApi.authorizationCode(code)
+                .build();
+    }
+
     public static void getAccessToken() {
         try {
             AuthorizationCodeCredentials authorizationCodeCredentials;
@@ -58,9 +63,6 @@ public class Spotify {
 
         authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
                 .show_dialog(true)
-                .build();
-
-        authorizationCodeRequest = spotifyApi.authorizationCode("")
                 .build();
     }
 
