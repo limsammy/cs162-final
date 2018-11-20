@@ -8,7 +8,7 @@ public class AuthSuccessController {
     @FXML
     private Label username;
     @FXML
-    private Label trackCt;
+    private Label followerCt;
     @FXML
     private Label albumCt;
     @FXML
