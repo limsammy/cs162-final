@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WebViewController {
     private Spotify spotify = new Spotify();
 
@@ -20,9 +23,18 @@ public class WebViewController {
     }
 
     public void pressFinishBtn(ActionEvent e) {
+        String url = loginView.getEngine().getLocation();
+        String code = getQueryCode(url);
+
         spotify.getAccessToken();
-        System.out.println("Got access token!");
+        System.out.println("Got access token: " + code);
         System.out.println("Closing login window...");
         ((Button)e.getTarget()).getScene().getWindow().hide();
+    }
+
+    private static String getQueryCode(String query) {
+        String[] params = query.split("\\?");
+        String code = params[1].split("=")[1];
+        return code;
     }
 }
