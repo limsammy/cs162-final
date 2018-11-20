@@ -46,7 +46,7 @@ public class LoginController {
         }
     }
 
-    public void pressSaveBtn(ActionEvent e) throws IOException {
+    public void pressSaveBtn(ActionEvent e) {
         System.out.println("Attempting to save config...");
         try {
             spotify.saveProperties(idText.getText(), secretText.getText());
