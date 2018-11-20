@@ -17,6 +17,7 @@ import java.util.Properties;
 
 public class LoginController {
     private Spotify spotify = new Spotify();
+    private ConfigHelper configHelper = new ConfigHelper();
     private Properties configProps;
 
     @FXML
@@ -38,7 +39,7 @@ public class LoginController {
     public void pressLoadConfigBtn(ActionEvent e) throws IOException {
         System.out.println("Loading config...");
         try {
-            configProps = spotify.loadProperties();
+            configProps = configHelper.loadProperties();
             System.out.println("config.properties file loaded successfully.");
             isLoaded.setText("Loaded.");
             updateApiLabels();
@@ -56,7 +57,7 @@ public class LoginController {
     public void pressSaveBtn(ActionEvent e) {
         System.out.println("Attempting to save config...");
         try {
-            spotify.saveProperties(idText.getText(), secretText.getText());
+            configHelper.saveProperties(idText.getText(), secretText.getText());
             System.out.println("Successfully saved API tokens in file config.properties!");
             ((Button)e.getTarget()).getScene().getWindow().hide();
             System.out.println("Closed modal...");

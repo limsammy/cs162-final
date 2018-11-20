@@ -9,7 +9,7 @@ import java.net.URI;
 import java.util.Properties;
 
 public class Spotify {
-    private static File configFile = new File("config.properties");
+    private static ConfigHelper configHelper = new ConfigHelper();
     private static Properties configProps;
 
     private static String clientId = new String();
@@ -26,6 +26,14 @@ public class Spotify {
             .show_dialog(true)
             .build();
 
+    public Spotify() {
+        try {
+            configHelper.loadProperties();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setApiConfig(String clientId, String clientSecret) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
@@ -35,30 +43,5 @@ public class Spotify {
         final URI uri = authorizationCodeUriRequest.execute();
 
         return uri.toString();
-    }
-
-    public Properties loadProperties() throws IOException {
-        Properties defaultProps = new Properties();
-
-        // set default properties
-        defaultProps.setProperty("clientId", "PLEASE_SET_THIS");
-        defaultProps.setProperty("clientSecret", "PLEASE_SET_THIS");
-
-        configProps = new Properties(defaultProps);
-
-        // load properties from config file
-        InputStream inputStream = new FileInputStream(configFile);
-        configProps.load(inputStream);
-        inputStream.close();
-
-        return configProps;
-    }
-
-    public void saveProperties(String clientId, String clientSecret) throws IOException {
-        configProps.setProperty("clientId", clientId);
-        configProps.setProperty("clientSecret", clientSecret);
-        OutputStream outputStream = new FileOutputStream(configFile);
-        configProps.store(outputStream, "API keys");
-        outputStream.close();
     }
 }
