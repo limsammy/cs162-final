@@ -31,6 +31,18 @@ public class LoginController {
     @FXML
     private TextField secretText;
 
+    @FXML
+    private void initialize() {
+        try {
+            configProps = configHelper.loadProperties();
+            clientId.setText(configProps.getProperty("clientId"));
+            clientSecret.setText(configProps.getProperty("clientSecret"));
+            isLoaded.setText("Loaded config...");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void pressLoginBtn(ActionEvent e) throws Exception {
         System.out.println("Opening authorization WebView...");
         renderWebView();
@@ -43,14 +55,12 @@ public class LoginController {
             System.out.println("config.properties file loaded successfully.");
             isLoaded.setText("Loaded.");
             updateApiLabels();
-            spotify.setApiConfig(configProps.getProperty("clientId"), configProps.getProperty("clientSecret"));
         } catch (IOException ex) {
             System.out.println("The config.properties file does not exist, default properties loaded. " +
                     "Please set these values now.");
             renderConfigWindow();
             System.out.println("Opened API key configuration window, waiting for user input...");
             updateApiLabels();
-            spotify.setApiConfig(configProps.getProperty("clientId"), configProps.getProperty("clientSecret"));
         }
     }
 
