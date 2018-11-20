@@ -20,10 +20,10 @@
                   <Label fx:id="isLoaded" text="Not Loaded" />
                   <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="15.0" />
                   <Label prefHeight="17.0" prefWidth="78.0" text="API clientID:" />
-                  <Label fx:id="clientId" text="NOT SET" />
+                  <Label fx:id="clientId" />
                   <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="15.0" />
                   <Label prefHeight="17.0" prefWidth="105.0" text="API clientSecret:" />
-                  <Label fx:id="clientSecret" text="NOT SET">
+                  <Label fx:id="clientSecret">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
