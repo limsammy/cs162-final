@@ -15,13 +15,13 @@
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <Label prefHeight="17.0" prefWidth="49.0" text="Config:" />
-                  <Label text="Not Loaded" />
+                  <Label fx:id="isLoaded" text="Not Loaded" />
                   <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="15.0" />
                   <Label prefHeight="17.0" prefWidth="78.0" text="API clientID:" />
-                  <Label text="NOT SET" />
+                  <Label fx:id="clientId" text="NOT SET" />
                   <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="15.0" />
                   <Label prefHeight="17.0" prefWidth="105.0" text="API clientSecret:" />
-                  <Label text="NOT SET">
+                  <Label fx:id="clientSecret" text="NOT SET">
                      <font>
                         <Font name="System Italic" size="13.0" />
                      </font>
