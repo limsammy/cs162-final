@@ -35,6 +35,7 @@ public class WebViewController {
         System.out.println("Closing login window...");
         ((Button)e.getTarget()).getScene().getWindow().hide();
         try {
+            System.out.println("Rendering Succesful Login Window...");
             renderLoginSuccess(e);
         } catch (IOException ex) {
             ex.printStackTrace();
