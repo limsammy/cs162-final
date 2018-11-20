@@ -1,9 +1,6 @@
 package recommendify;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 public class Spotify {
@@ -40,5 +37,13 @@ public class Spotify {
         inputStream.close();
 
         return configProps;
+    }
+
+    public void saveProperties(String clientId, String clientSecret) throws IOException {
+        configProps.setProperty("clientId", clientId);
+        configProps.setProperty("clientSecret", clientSecret);
+        OutputStream outputStream = new FileOutputStream(configFile);
+        configProps.store(outputStream, "API keys");
+        outputStream.close();
     }
 }
