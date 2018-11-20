@@ -12,19 +12,24 @@ public class Spotify {
     private static File configFile = new File("config.properties");
     private static Properties configProps;
 
-    private static final String clientId = new String();
-    private static final String clientSecret = new String();
+    private static String clientId = new String();
+    private static String clientSecret = new String();
     private static final URI redirectUri = SpotifyHttpManager.makeUri("https://example.com/spotify-redirect");
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-            .setClientId(clientId)
-            .setClientSecret(clientSecret)
+            .setClientId(configProps.getProperty("clientId"))
+            .setClientSecret(configProps.getProperty("clientSecret"))
             .setRedirectUri(redirectUri)
             .build();
 
     private static final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
             .show_dialog(true)
             .build();
+
+    public void setApiConfig(String clientId, String clientSecret) {
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+    }
 
     public static String getAuthUri() {
         final URI uri = authorizationCodeUriRequest.execute();
