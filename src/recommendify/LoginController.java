@@ -42,12 +42,14 @@ public class LoginController {
             System.out.println("config.properties file loaded successfully.");
             isLoaded.setText("Loaded.");
             updateApiLabels();
+            spotify.setApiConfig(configProps.getProperty("clientId"), configProps.getProperty("clientSecret"));
         } catch (IOException ex) {
             System.out.println("The config.properties file does not exist, default properties loaded. " +
                     "Please set these values now.");
             renderConfigWindow();
             System.out.println("Opened API key configuration window, waiting for user input...");
             updateApiLabels();
+            spotify.setApiConfig(configProps.getProperty("clientId"), configProps.getProperty("clientSecret"));
         }
     }
 
