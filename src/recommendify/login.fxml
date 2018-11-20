@@ -14,18 +14,33 @@
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <bottom>
-            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="22.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="17.0" prefWidth="49.0" text="Config:" />
-                  <Label fx:id="isLoaded" text="Not Loaded" />
+                  <Label prefHeight="9.0" prefWidth="32.0" text="Config:">
+                     <font>
+                        <Font size="8.0" />
+                     </font></Label>
+                  <Label fx:id="isLoaded" text="Not Loaded">
+                     <font>
+                        <Font size="8.0" />
+                     </font></Label>
                   <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="15.0" />
-                  <Label prefHeight="17.0" prefWidth="78.0" text="API clientID:" />
-                  <Label fx:id="clientId" />
+                  <Label prefHeight="10.0" prefWidth="50.0" text="API clientID:">
+                     <font>
+                        <Font size="8.0" />
+                     </font></Label>
+                  <Label fx:id="clientId">
+                     <font>
+                        <Font size="8.0" />
+                     </font></Label>
                   <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="15.0" />
-                  <Label prefHeight="17.0" prefWidth="105.0" text="API clientSecret:" />
+                  <Label prefHeight="10.0" prefWidth="67.0" text="API clientSecret:">
+                     <font>
+                        <Font size="8.0" />
+                     </font></Label>
                   <Label fx:id="clientSecret">
                      <font>
-                        <Font name="System Italic" size="13.0" />
+                        <Font size="8.0" />
                      </font>
                   </Label>
                </children>
