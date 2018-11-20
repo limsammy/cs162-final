@@ -21,16 +21,12 @@ public class LoginController {
 
     @FXML
     private Label isLoaded;
-
     @FXML
     private Label clientId;
-
     @FXML
     private Label clientSecret;
-
     @FXML
     private TextField idText;
-
     @FXML
     private TextField secretText;
 
