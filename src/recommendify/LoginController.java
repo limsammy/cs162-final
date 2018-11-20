@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +20,12 @@ public class LoginController {
 
     @FXML
     private Label isLoaded;
+
+    @FXML
+    private TextField idText;
+
+    @FXML
+    private TextField secretText;
 
     @FXML
     private void initialize() {
@@ -39,6 +46,17 @@ public class LoginController {
             System.out.println("The config.properties file does not exist, default properties loaded. " +
                     "Please set these values now.");
             renderConfigWindow();
+            System.out.println("Opened API key configuration window, waiting for user input...");
+        }
+    }
+
+    public void pressSaveBtn(ActionEvent e) throws IOException {
+        System.out.println("Attempting to save config...");
+        try {
+            spotify.saveProperties(idText.getText(), secretText.getText());
+            System.out.println("Succesfully saved config!");
+        } catch (IOException ex) {
+            System.out.println("Could not save for some unknown reason...");
         }
     }
 
