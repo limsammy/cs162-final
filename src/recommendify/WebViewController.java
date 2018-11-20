@@ -6,9 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class WebViewController {
     private Spotify spotify = new Spotify();
 
