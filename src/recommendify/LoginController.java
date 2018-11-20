@@ -54,7 +54,7 @@ public class LoginController {
         System.out.println("Attempting to save config...");
         try {
             spotify.saveProperties(idText.getText(), secretText.getText());
-            System.out.println("Succesfully saved config!");
+            System.out.println("Successfully saved API tokens in file config.properties!");
         } catch (IOException ex) {
             System.out.println("Could not save for some unknown reason...");
         }
