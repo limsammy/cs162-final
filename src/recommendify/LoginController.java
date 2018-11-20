@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -22,19 +23,16 @@ public class LoginController {
     private Label isLoaded;
 
     @FXML
+    private Label clientId;
+
+    @FXML
+    private Label clientSecret;
+
+    @FXML
     private TextField idText;
 
     @FXML
     private TextField secretText;
-
-    @FXML
-    private void initialize() {
-        if (configProps == null) {
-            isLoaded.setText("Not loaded.");
-        } else {
-            isLoaded.setText("Loaded.");
-        }
-    }
 
     public void pressLoadConfigBtn(ActionEvent e) throws IOException {
         System.out.println("Loading config...");
@@ -55,6 +53,8 @@ public class LoginController {
         try {
             spotify.saveProperties(idText.getText(), secretText.getText());
             System.out.println("Successfully saved API tokens in file config.properties!");
+            ((Button)e.getTarget()).getScene().getWindow().hide();
+            System.out.println("Closed modal...");
         } catch (IOException ex) {
             System.out.println("Could not save for some unknown reason...");
         }
