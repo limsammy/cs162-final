@@ -33,17 +33,17 @@ public class Spotify {
     public static void getAccessToken() {
         try {
             AuthorizationCodeCredentials authorizationCodeCredentials;
+
             try {
                 authorizationCodeCredentials = authorizationCodeRequest.execute();
+                // Set access and refresh token for further "spotifyApi" object usage
+                spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
+                spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
+
+                System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            // Set access and refresh token for further "spotifyApi" object usage
-            spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
-            spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
-
-            System.out.println("Expires in: " + authorizationCodeCredentials.getExpiresIn());
         } catch (SpotifyWebApiException e) {
             System.out.println("Error: " + e.getMessage());
         }

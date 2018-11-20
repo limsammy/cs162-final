@@ -16,7 +16,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class LoginController {
-    private Spotify spotify = new Spotify();
     private ConfigHelper configHelper = new ConfigHelper();
     private Properties configProps;
 
