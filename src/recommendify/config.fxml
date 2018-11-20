@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="recommendify.LoginController">
    <top>
       <VBox prefHeight="51.0" prefWidth="558.0" BorderPane.alignment="CENTER">
          <children>
@@ -75,7 +75,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="48.0" prefWidth="440.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="saveBtn" mnemonicParsing="false" text="Save Config" />
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#pressSaveBtn" text="Save Config" />
          </children>
       </HBox>
    </bottom>
