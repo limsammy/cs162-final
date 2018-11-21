@@ -43,6 +43,7 @@ public class WebViewController {
         ((Button)e.getTarget()).getScene().getWindow().hide();
         try {
             System.out.println("Rendering Successful Login Window...");
+
             renderLoginSuccess(e, refreshToken);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -55,6 +56,8 @@ public class WebViewController {
         Scene loginSuccessScene = new Scene(loginSuccessParent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+        window.setResizable(false);
 
         window.setScene(loginSuccessScene);
         window.show();

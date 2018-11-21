@@ -28,6 +28,8 @@ public class WelcomeController {
 
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
 
+        window.setResizable(false);
+
         window.setScene(loginViewScene);
         window.show();
     }

@@ -45,6 +45,8 @@ public class LoginController {
     public void pressLoginBtn(ActionEvent e) throws Exception {
         System.out.println("Opening authorization WebView...");
         renderWebView();
+        System.out.println("Closing parent window...");
+        ((Button)e.getTarget()).getScene().getWindow().hide();
     }
 
     public void pressLoadConfigBtn(ActionEvent e) throws IOException {
@@ -83,6 +85,7 @@ public class LoginController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("Set API Keys Here");
+        stage.setResizable(false);
         stage.setScene(new Scene(root1));
         stage.show();
     }
@@ -92,6 +95,7 @@ public class LoginController {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Login");
+        stage.setResizable(false);
         stage.setScene(new Scene(root1));
         stage.show();
     }

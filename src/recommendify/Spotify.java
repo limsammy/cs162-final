@@ -104,12 +104,12 @@ public class Spotify {
         User current_user = getCurrentUser(accessToken);
         HashMap<String, String> user_data =  new HashMap<>();
 
-        System.out.println(current_user.getEmail());
-
         user_data.put("username", current_user.getDisplayName());
         user_data.put("email", current_user.getEmail());
         user_data.put("follower_count", current_user.getFollowers().getTotal().toString());
         user_data.put("playlist_count", getPlaylistCount());
+
+        System.out.println("Successfully mapped user data for rendering...");
 
         return user_data;
     }
