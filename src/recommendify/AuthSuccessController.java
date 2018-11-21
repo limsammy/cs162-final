@@ -4,12 +4,13 @@ import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import recommendify.Services.SpotifyService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AuthSuccessController {
-    private Spotify spotify = new Spotify();
+    private SpotifyService spotifyService = new SpotifyService();
 
     @FXML
     private Label username;
@@ -22,7 +23,7 @@ public class AuthSuccessController {
 
     @FXML
     private void initialize() {
-        HashMap<String, String> user_data = spotify.parseUserData();
+        HashMap<String, String> user_data = spotifyService.parseUserData();
 
         username.setText(user_data.get("username"));
         email.setText(user_data.get("email"));
@@ -32,7 +33,7 @@ public class AuthSuccessController {
 
     public void pressViewPlaylistsBtn(ActionEvent e) {
         System.out.println("Fetching playlists (doin lotsa magic)...");
-        HashMap<String, Object> playlists = buildPlaylistsList(spotify.grabPlaylists());
+        HashMap<String, Object> playlists = buildPlaylistsList(spotifyService.grabPlaylists());
         System.out.println("# of playlists mined for data: " + playlists.size());
     }
 

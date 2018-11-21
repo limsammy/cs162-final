@@ -10,11 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import recommendify.Services.SpotifyService;
 
 import java.io.IOException;
 
 public class WebViewController {
-    public Spotify spotify = new Spotify();
+    public SpotifyService spotifyService = new SpotifyService();
 
     private String refreshToken;
 
@@ -25,16 +26,16 @@ public class WebViewController {
     private void initialize()
     {
         WebEngine engine = loginView.getEngine();
-        engine.load(spotify.getAuthUri());
+        engine.load(spotifyService.getAuthUri());
     }
 
     public void pressFinishBtn(ActionEvent e) {
         String url = loginView.getEngine().getLocation();
         String code = getQueryCode(url);
 
-        spotify.requestAuth(code);
-        spotify.getAccessToken();
-        refreshToken = spotify.getRefreshToken();
+        spotifyService.requestAuth(code);
+        spotifyService.getAccessToken();
+        refreshToken = spotifyService.getRefreshToken();
 
         System.out.println("Got access token: " + code);
         System.out.println("Got refresh token: " + refreshToken);

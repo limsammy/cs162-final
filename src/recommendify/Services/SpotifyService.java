@@ -1,4 +1,4 @@
-package recommendify;
+package recommendify.Services;
 
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
@@ -16,6 +16,7 @@ import com.wrapper.spotify.requests.data.library.CheckUsersSavedTracksRequest;
 import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
 import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
+import recommendify.ConfigHelper;
 
 import java.io.*;
 import java.net.URI;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
-public class Spotify {
+public class SpotifyService {
     private static ConfigHelper configHelper = new ConfigHelper();
     private static Properties configProps;
 
@@ -40,7 +41,7 @@ public class Spotify {
 
     private static GetCurrentUsersProfileRequest getCurrentUsersProfileRequest;
 
-    public Spotify() {
+    public SpotifyService() {
         try {
             configProps = configHelper.loadProperties();
         } catch (IOException e) {
