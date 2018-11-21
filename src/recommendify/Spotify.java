@@ -19,6 +19,7 @@ import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileReq
 
 import java.io.*;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
@@ -55,6 +56,12 @@ public class Spotify {
                 .scope("user-read-email,playlist-read-private,user-read-private,user-follow-read")
                 .show_dialog(true)
                 .build();
+    }
+
+    public static ArrayList grabPlaylists() {
+        ArrayList results = new ArrayList();
+
+        return results;
     }
 
     public static void refreshAccess(String refreshToken) {

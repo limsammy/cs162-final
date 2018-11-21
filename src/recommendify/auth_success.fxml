@@ -128,7 +128,7 @@
          <center>
             <HBox alignment="CENTER" prefHeight="47.0" prefWidth="197.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="viewPlaylistsBtn" mnemonicParsing="false" text="View My Playlists" />
+                  <Button fx:id="viewPlaylistsBtn" mnemonicParsing="false" onAction="#pressViewPlaylistsBtn" text="View My Playlists" />
                </children>
             </HBox>
          </center>

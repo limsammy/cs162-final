@@ -1,9 +1,10 @@
 package recommendify;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AuthSuccessController {
@@ -26,5 +27,15 @@ public class AuthSuccessController {
         email.setText(user_data.get("email"));
         followerCt.setText(user_data.get("follower_count"));
         playlistCt.setText(user_data.get("playlist_count"));
+    }
+
+    public void pressViewPlaylistsBtn(ActionEvent e) throws Exception {
+        System.out.println("Attempting to fetch playlists...");
+        ArrayList playlists = spotify.grabPlaylists();
+        System.out.println("Playlists grabbed: " + playlists);
+
+
+        // instantiate playlists array by creating helper method in spotify class
+        // pass list to renderPlaylistsList function that renders a new table pane
     }
 }
