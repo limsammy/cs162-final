@@ -52,7 +52,7 @@ public class Spotify {
                 .build();
         authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
                 .state("x4xkmn9pu3j6ukrs8n")
-                .scope("user-read-birthdate,user-read-email")
+                .scope("user-read-email,playlist-read-private,user-read-private,user-follow-read")
                 .show_dialog(true)
                 .build();
     }
@@ -104,7 +104,7 @@ public class Spotify {
         User current_user = getCurrentUser(accessToken);
         HashMap<String, String> user_data =  new HashMap<>();
 
-        System.out.println(current_user);
+        System.out.println(current_user.getEmail());
 
         user_data.put("username", current_user.getDisplayName());
         user_data.put("email", current_user.getEmail());
@@ -123,7 +123,7 @@ public class Spotify {
 
         try {
             final Paging<PlaylistSimplified> playlistSimplifiedPaging = getListOfCurrentUsersPlaylistsRequest.execute();
-            System.out.println("Succesfully retrieved current user list of playlists!");
+            System.out.println("Successfully retrieved current user list of playlists!");
             count = playlistSimplifiedPaging.getTotal().toString();
         } catch (IOException | SpotifyWebApiException e) {
             System.out.println("Error: " + e.getMessage());

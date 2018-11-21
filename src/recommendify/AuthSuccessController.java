@@ -12,19 +12,19 @@ public class AuthSuccessController {
     @FXML
     private Label username;
     @FXML
+    private Label email;
+    @FXML
+    private Label followerCt;
+    @FXML
     private Label playlistCt;
-    @FXML
-    private Label currentTrack;
-    @FXML
-    private Button playBtn;
 
     @FXML
     private void initialize() {
         HashMap<String, String> user_data = spotify.parseUserData();
 
         username.setText(user_data.get("username"));
+        email.setText(user_data.get("email"));
+        followerCt.setText(user_data.get("follower_count"));
         playlistCt.setText(user_data.get("playlist_count"));
-        currentTrack.setText(spotify.getCurrentTrack());
-//        playBtn.setText();
     }
 }
