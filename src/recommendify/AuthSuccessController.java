@@ -32,10 +32,5 @@ public class AuthSuccessController {
     public void pressViewPlaylistsBtn(ActionEvent e) throws Exception {
         System.out.println("Attempting to fetch playlists...");
         ArrayList playlists = spotify.grabPlaylists();
-        System.out.println("Playlists grabbed: " + playlists);
-
-
-        // instantiate playlists array by creating helper method in spotify class
-        // pass list to renderPlaylistsList function that renders a new table pane
     }
 }

@@ -60,6 +60,25 @@ public class Spotify {
 
     public static ArrayList grabPlaylists() {
         ArrayList results = new ArrayList();
+        final GetListOfCurrentUsersPlaylistsRequest getListOfCurrentUsersPlaylistsRequest = spotifyApi
+                .getListOfCurrentUsersPlaylists()
+                .offset(0)
+                .build();
+
+        try {
+            final Paging<PlaylistSimplified> playlistSimplifiedPaging = getListOfCurrentUsersPlaylistsRequest.execute();
+
+            System.out.println("Successfully fetched list of current user's playlists!");
+            System.out.println("Total: " + playlistSimplifiedPaging.getTotal());
+
+            for (PlaylistSimplified playlist : playlistSimplifiedPaging.getItems()) {
+                results.add(playlist);
+            }
+
+            System.out.println("Finished shovelling all playlist objects into results array!");
+        } catch (IOException | SpotifyWebApiException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
 
         return results;
     }
@@ -88,23 +107,6 @@ public class Spotify {
 
     public static String getRefreshToken() {
         return authorizationCodeCredentials.getRefreshToken();
-    }
-
-    public static String getCurrentTrack() {
-        final GetUsersCurrentlyPlayingTrackRequest getUsersCurrentlyPlayingTrackRequest = spotifyApi
-                .getUsersCurrentlyPlayingTrack()
-                .market(CountryCode.NA)
-                .build();
-        String track = null;
-
-        try {
-            final CurrentlyPlaying currentlyPlaying = getUsersCurrentlyPlayingTrackRequest.execute();
-            track = currentlyPlaying.getItem().getName();
-        } catch (IOException | SpotifyWebApiException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        return track;
     }
 
     public static HashMap<String, String> parseUserData() {
