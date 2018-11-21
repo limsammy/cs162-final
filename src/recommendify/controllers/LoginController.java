@@ -80,7 +80,7 @@ public class LoginController {
     }
 
     private void renderConfigWindow() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/config.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/config.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -92,7 +92,7 @@ public class LoginController {
     }
 
     private void renderWebView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/web_view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/web_view.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Login");

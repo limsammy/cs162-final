@@ -3,9 +3,16 @@ package recommendify.controllers;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import recommendify.helpers.SpotifyApiHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -35,6 +42,27 @@ public class AuthSuccessController {
         System.out.println("Fetching playlists (doin lotsa magic)...");
         HashMap<String, Object> playlists = buildPlaylistsList(spotifyService.grabPlaylists());
         System.out.println("# of playlists mined for data: " + playlists.size());
+
+        System.out.println("Rendering playlist table view and closing other window...");
+        ((Button)e.getTarget()).getScene().getWindow().hide();
+        try {
+            renderDataTable(e, playlists);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void renderDataTable(ActionEvent e, HashMap<String, Object> data) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        Parent tableViewParent = loader.load(getClass().getResource("../views/playlists_list.fxml"));
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
+
+        window.setResizable(false);
+
+        window.setScene(tableViewScene);
+        window.show();
     }
 
     private HashMap<String, Object> buildPlaylistsList(ArrayList<PlaylistSimplified> rawPlaylists) {
