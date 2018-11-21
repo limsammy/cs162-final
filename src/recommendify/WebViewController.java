@@ -14,7 +14,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WebViewController {
-    private Spotify spotify = new Spotify();
+    public Spotify spotify = new Spotify();
+
+    private String refreshToken;
 
     @FXML
     private WebView loginView;
@@ -29,20 +31,25 @@ public class WebViewController {
     public void pressFinishBtn(ActionEvent e) {
         String url = loginView.getEngine().getLocation();
         String code = getQueryCode(url);
+
         spotify.requestAuth(code);
         spotify.getAccessToken();
+        refreshToken = spotify.getRefreshToken();
+
         System.out.println("Got access token: " + code);
+        System.out.println("Got refresh token: " + refreshToken);
         System.out.println("Closing login window...");
+
         ((Button)e.getTarget()).getScene().getWindow().hide();
         try {
-            System.out.println("Rendering Succesful Login Window...");
-            renderLoginSuccess(e);
+            System.out.println("Rendering Successful Login Window...");
+            renderLoginSuccess(e, refreshToken);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    private void renderLoginSuccess(ActionEvent event) throws IOException {
+    private void renderLoginSuccess(ActionEvent event, String refreshToken) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         Parent loginSuccessParent = loader.load(getClass().getResource("auth_success.fxml"));
         Scene loginSuccessScene = new Scene(loginSuccessParent);
@@ -56,6 +63,8 @@ public class WebViewController {
     private static String getQueryCode(String query) {
         String[] params = query.split("\\?");
         String code = params[1].split("=")[1];
+        code = code.split("&")[0];
+
         return code;
     }
 }

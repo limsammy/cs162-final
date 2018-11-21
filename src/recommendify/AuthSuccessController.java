@@ -7,12 +7,10 @@ import javafx.scene.control.Label;
 import java.util.HashMap;
 
 public class AuthSuccessController {
-    private Spotify spotify;
+    private Spotify spotify = new Spotify();
 
     @FXML
     private Label username;
-    @FXML
-    private Label email;
     @FXML
     private Label playlistCt;
     @FXML
@@ -25,9 +23,8 @@ public class AuthSuccessController {
         HashMap<String, String> user_data = spotify.parseUserData();
 
         username.setText(user_data.get("username"));
-        email.setText(user_data.get("email"));
         playlistCt.setText(user_data.get("playlist_count"));
-//        currentTrack.setText();
+        currentTrack.setText(spotify.getCurrentTrack());
 //        playBtn.setText();
     }
 }
