@@ -62,7 +62,8 @@ public class Spotify {
         ArrayList results = new ArrayList();
         final GetListOfCurrentUsersPlaylistsRequest getListOfCurrentUsersPlaylistsRequest = spotifyApi
                 .getListOfCurrentUsersPlaylists()
-                .offset(0)
+                .limit(50)
+                .offset(0) // TODO: make this value dynamic so we mine all playlists (50 is max limit)
                 .build();
 
         try {

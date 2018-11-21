@@ -1,5 +1,6 @@
 package recommendify;
 
+import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,8 +30,31 @@ public class AuthSuccessController {
         playlistCt.setText(user_data.get("playlist_count"));
     }
 
-    public void pressViewPlaylistsBtn(ActionEvent e) throws Exception {
-        System.out.println("Attempting to fetch playlists...");
-        ArrayList playlists = spotify.grabPlaylists();
+    public void pressViewPlaylistsBtn(ActionEvent e) {
+        System.out.println("Fetching playlists (doin lotsa magic)...");
+        HashMap<String, Object> playlists = buildPlaylistsList(spotify.grabPlaylists());
+        System.out.println("# of playlists mined for data: " + playlists.size());
+    }
+
+    private HashMap<String, Object> buildPlaylistsList(ArrayList<PlaylistSimplified> rawPlaylists) {
+        HashMap<String, Object> results = new HashMap<>();
+
+        for (PlaylistSimplified playlist : rawPlaylists) {
+            HashMap<String, Object> dataBundle = new HashMap<>();
+
+            dataBundle.put("name", playlist.getName());
+            dataBundle.put("id", playlist.getId());
+            dataBundle.put("tracksList", playlist.getTracks());
+            dataBundle.put("tracksCount", playlist.getTracks().getTotal());
+            dataBundle.put("images", playlist.getImages());
+            dataBundle.put("uri", playlist.getUri());
+
+            results.put(playlist.getName(), dataBundle);
+        }
+
+        System.out.println("Extracted necessary elements from playlist objects...");
+        System.out.println("Returning compiled hashmap of data!");
+
+        return results;
     }
 }
