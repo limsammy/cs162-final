@@ -1,4 +1,4 @@
-package recommendify;
+package recommendify.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,12 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import recommendify.Services.SpotifyService;
+import recommendify.helpers.SpotifyApiHelper;
 
 import java.io.IOException;
 
 public class WebViewController {
-    public SpotifyService spotifyService = new SpotifyService();
+    public SpotifyApiHelper spotifyService = new SpotifyApiHelper();
 
     private String refreshToken;
 

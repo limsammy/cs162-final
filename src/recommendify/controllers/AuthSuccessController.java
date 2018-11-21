@@ -1,16 +1,16 @@
-package recommendify;
+package recommendify.controllers;
 
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import recommendify.Services.SpotifyService;
+import recommendify.helpers.SpotifyApiHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AuthSuccessController {
-    private SpotifyService spotifyService = new SpotifyService();
+    private SpotifyApiHelper spotifyService = new SpotifyApiHelper();
 
     @FXML
     private Label username;

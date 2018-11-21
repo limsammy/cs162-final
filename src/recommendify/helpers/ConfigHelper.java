@@ -1,4 +1,4 @@
-package recommendify;
+package recommendify.helpers;
 
 
 import java.io.*;

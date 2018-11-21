@@ -1,4 +1,4 @@
-package recommendify;
+package recommendify.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.application.Platform;

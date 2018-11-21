@@ -1,4 +1,4 @@
-package recommendify;
+package recommendify.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import recommendify.helpers.ConfigHelper;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -91,7 +92,7 @@ public class LoginController {
     }
 
     private void renderWebView() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/webview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../resources/web_view.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Login");

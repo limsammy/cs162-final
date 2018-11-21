@@ -1,22 +1,17 @@
-package recommendify.Services;
+package recommendify.helpers;
 
-import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
-import com.wrapper.spotify.model_objects.miscellaneous.CurrentlyPlaying;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
-import com.wrapper.spotify.requests.data.library.CheckUsersSavedTracksRequest;
-import com.wrapper.spotify.requests.data.player.GetUsersCurrentlyPlayingTrackRequest;
 import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
-import recommendify.ConfigHelper;
 
 import java.io.*;
 import java.net.URI;
@@ -24,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
-public class SpotifyService {
+public class SpotifyApiHelper {
     private static ConfigHelper configHelper = new ConfigHelper();
     private static Properties configProps;
 
@@ -41,7 +36,7 @@ public class SpotifyService {
 
     private static GetCurrentUsersProfileRequest getCurrentUsersProfileRequest;
 
-    public SpotifyService() {
+    public SpotifyApiHelper() {
         try {
             configProps = configHelper.loadProperties();
         } catch (IOException e) {
