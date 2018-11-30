@@ -5,33 +5,40 @@ In this application we utilize a Java wrapper for the Spotify HTTP api (found [h
 
 ## Table of Contents
 
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Support](#support)
 - [Contributing](#contributing)
 
+## Prerequisites
+
+- Apache Maven v3.6.0
+- JDK v1.8.0_191
+- Premium Spotify account
+
 ## Installation
 
-Download to your project directory, add `README.md`, and commit:
-
+Install a copy locally and navigate to project root directory:
 ```sh
-curl -LO http://git.io/Xy0Chg
-git add README.md
-git commit -m "Use README Boilerplate"
+git clone git@github.com:limsammy/cs162-final.git && cd cs162-final
 ```
+
+Use maven to compile dependencies and application:
+```sh
+mvn clean package
+```
+
+Application will be compiled to `target/recommendify-1.0-SNAPSHOT.jar`
 
 ## Usage
 
-Replace the contents of `README.md` with your project's:
+After compiling the .jar, navigate to the release directory:
+```sh
+cd target
+```
 
-- Name
-- Description
-- Installation instructions
-- Usage instructions
-- Support instructions
-- Contributing instructions
 
-Feel free to remove any sections that aren't applicable to your project.
 
 ## Support
 
