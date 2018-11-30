@@ -1,6 +1,6 @@
 # README
 
-This is the official documentation for Recommendify (name still undecided), my project for CS162. In this application we utilize an already-written Java wrapper for the Spotify HTTP api (found [here](https://github.com/thelinmichael/spotify-web-api-java)) for our authentication, JavaFX for our frontend, and Java's built-in Properties class for maintaining state. The prime directive of this application has yet to be written.
+This is the official documentation for Recommendify (name still undecided), my project for CS162. In this application we utilize an already-written Java wrapper for the Spotify HTTP api (found [here](https://github.com/thelinmichael/spotify-web-api-java)) for our authentication, JavaFX for our frontend, and Java's built-in Properties class for maintaining state. The prime directive of this application is to demonstrate lossless audio ripping from your machine's sound card. TODO: ADD LEGAL STUFF SO I WONT GET IN TROUBLE
 
 ## Table of Contents
 
