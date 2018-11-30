@@ -28,10 +28,7 @@ Use Maven to build dependencies and compile production jar:
 mvn clean compile jfx:package
 ```
 
-Jar will be compiled to:
-```sh
-target/jfx/app/recommendify-1.0-SNAPSHOT.jar
-```
+Jar will be compiled to `target/jfx/app/recommendify-1.0-SNAPSHOT.jar`
 
 ## Usage
 
