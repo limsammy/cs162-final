@@ -23,12 +23,15 @@ Install a copy locally and navigate to project root directory:
 git clone git@github.com:limsammy/cs162-final.git && cd cs162-final
 ```
 
-Use maven to compile dependencies and application:
+Use Maven to build dependencies and compile production jar:
 ```sh
-mvn clean package
+mvn clean compile jfx:package
 ```
 
-Application will be compiled to `target/recommendify-1.0-SNAPSHOT.jar`
+Jar will be compiled to:
+```sh
+target/jfx/app/recommendify-1.0-SNAPSHOT.jar
+```
 
 ## Usage
 
