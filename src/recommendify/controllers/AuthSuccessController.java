@@ -54,7 +54,7 @@ public class AuthSuccessController {
 
     private void renderDataTable(ActionEvent e, HashMap<String, Object> data) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Parent tableViewParent = loader.load(getClass().getResource("../views/playlists_list.fxml"));
+        Parent tableViewParent = loader.load(getClass().getResource("../resources/playlists_list.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();

@@ -53,7 +53,7 @@ public class WebViewController {
 
     private void renderLoginSuccess(ActionEvent event, String refreshToken) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Parent loginSuccessParent = loader.load(getClass().getResource("../views/auth_success.fxml"));
+        Parent loginSuccessParent = loader.load(getClass().getResource("../resources/auth_success.fxml"));
         Scene loginSuccessScene = new Scene(loginSuccessParent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

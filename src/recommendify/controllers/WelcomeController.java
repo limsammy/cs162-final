@@ -23,7 +23,7 @@ public class WelcomeController {
     }
 
     public void changeScreen(ActionEvent e) throws IOException {
-        Parent loginViewParent = FXMLLoader.load(getClass().getResource("../views/login.fxml"));
+        Parent loginViewParent = FXMLLoader.load(getClass().getResource("../resources/fxml/login.fxml"));
         Scene loginViewScene = new Scene(loginViewParent);
 
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
