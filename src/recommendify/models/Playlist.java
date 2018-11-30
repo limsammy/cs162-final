@@ -19,7 +19,7 @@ public class Playlist {
      *
      */
     public Playlist(String playlistName, ArrayList playlistTracks) {
-        this.playlistName = new String(playlistName);
-        this.playlistTracks = new ArrayList(playlistTracks);
+        this.playlistName = playlistName;
+        this.playlistTracks = playlistTracks;
     }
 }
