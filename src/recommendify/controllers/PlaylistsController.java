@@ -12,6 +12,11 @@ import javafx.util.Callback;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Controller class for Playlists List view
+ *
+ * @author Sam Lim
+ */
 public class PlaylistsController {
     private HashMap data;
 

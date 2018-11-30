@@ -10,6 +10,11 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
+/**
+ * Controller class for Welcome view
+ *
+ * @author Sam Lim
+ */
 public class WelcomeController {
     public void pressStartBtn(ActionEvent e) throws IOException {
         System.out.println("Start button has been pressed...");

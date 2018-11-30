@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Controller class for AuthSuccess view
+ *
+ * @author Sam Lim
+ */
 public class AuthSuccessController {
     private SpotifyApiHelper spotifyService = new SpotifyApiHelper();
 

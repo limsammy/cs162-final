@@ -14,6 +14,11 @@ import recommendify.helpers.SpotifyApiHelper;
 
 import java.io.IOException;
 
+/**
+ * Controller class for Web view
+ *
+ * @author Sam Lim
+ */
 public class WebViewController {
     public SpotifyApiHelper spotifyService = new SpotifyApiHelper();
 

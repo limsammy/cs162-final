@@ -4,6 +4,11 @@ package recommendify.helpers;
 import java.io.*;
 import java.util.Properties;
 
+/**
+ * Helper class for loading and saving properties file
+ *
+ * @author Sam Lim
+ */
 public class ConfigHelper {
     private static File configFile = new File("config.properties");
     private static Properties configProps;

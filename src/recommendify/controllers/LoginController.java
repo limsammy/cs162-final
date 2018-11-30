@@ -16,6 +16,11 @@ import recommendify.helpers.ConfigHelper;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Controller class for Login view
+ *
+ * @author Sam Lim
+ */
 public class LoginController {
     private ConfigHelper configHelper = new ConfigHelper();
     private Properties configProps;

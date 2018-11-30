@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 
+/**
+ * Helper class for Spotify API dependency
+ *
+ * @author Sam Lim
+ */
 public class SpotifyApiHelper {
     private static ConfigHelper configHelper = new ConfigHelper();
     private static Properties configProps;
