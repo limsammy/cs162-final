@@ -1,16 +1,19 @@
 package recommendify.helpers;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import com.wrapper.spotify.model_objects.specification.Paging;
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
+import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import com.wrapper.spotify.model_objects.specification.User;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeRequest;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 import com.wrapper.spotify.requests.data.playlists.GetListOfCurrentUsersPlaylistsRequest;
+import com.wrapper.spotify.requests.data.playlists.GetPlaylistsTracksRequest;
 import com.wrapper.spotify.requests.data.users_profile.GetCurrentUsersProfileRequest;
 
 import java.io.*;
@@ -57,6 +60,35 @@ public class SpotifyApiHelper {
                 .scope("user-read-email,playlist-read-private,user-read-private,user-follow-read")
                 .show_dialog(true)
                 .build();
+    }
+
+    public static ArrayList<PlaylistTrack> grabPlaylistTracks(String playlistId) {
+        ArrayList<PlaylistTrack> results = new ArrayList();
+        Integer offset = 0;
+        GetPlaylistsTracksRequest getPlaylistsTracksRequest = spotifyApi
+                .getPlaylistsTracks(playlistId)
+//                .fields("description") // TODO: set query fields later after inspecting actual return object
+                .limit(100) // TODO: add check to see if total count exceeds limit. if yes, increase offset
+                .offset(offset)
+                .market(CountryCode.NA)
+                .build();
+
+        try {
+            final Paging<PlaylistTrack> playlistTrackPaging = getPlaylistsTracksRequest.execute();
+
+            System.out.println("Successfully fetched list of tracks for playlist: " + playlistId + "!");
+            System.out.println("Total tracks fetched: " + playlistTrackPaging.getTotal());
+
+            for (PlaylistTrack track : playlistTrackPaging.getItems()) {
+                results.add(track);
+            }
+
+            System.out.println("Finished shovelling playlist tracks into array!");
+        } catch (IOException | SpotifyWebApiException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return results;
     }
 
     public static ArrayList grabPlaylists() {
