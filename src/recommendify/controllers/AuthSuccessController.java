@@ -1,6 +1,7 @@
 package recommendify.controllers;
 
 import com.wrapper.spotify.model_objects.specification.PlaylistSimplified;
+import com.wrapper.spotify.model_objects.specification.PlaylistTrack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,14 +82,17 @@ public class AuthSuccessController {
             playlistObj.setPlaylistId(playlist.getId());
             playlistObj.setPlaylistUri(playlist.getUri());
             playlistObj.setPlaylistTracksCount(playlist.getTracks().getTotal());
-//            playlistObj.setPlaylistTracks(playlist.getTracks());
-            System.out.println(playlist.getTracks());
+
+            // logic for grabbing list of tracks in playlist
+            // TODO: perform this logic when user selects an individual playlist. no need to slow app down by preloading all tracks
+            ArrayList<PlaylistTrack> tracks = spotifyService.grabPlaylistTracks(playlist.getId());
+            playlistObj.setPlaylistTracks(tracks);
 
             results.add(playlistObj);
         }
 
         System.out.println("Extracted necessary elements from playlist objects...");
-        System.out.println("Returning compiled arraylist of playlist models!");
+        System.out.println("Returning compiled array of playlist models!");
 
         return results;
     }
