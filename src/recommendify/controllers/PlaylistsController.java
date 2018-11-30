@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Callback;
+import recommendify.models.Playlist;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +21,7 @@ import java.util.Map;
  */
 public class PlaylistsController {
     private HashMap data;
+    private ArrayList<Playlist> playlistsArray;
 
     @FXML
     private TableView<Object> playlistTable;
@@ -38,4 +41,7 @@ public class PlaylistsController {
 
     }
 
+    public void setPlaylistsArray(ArrayList<Playlist> playlistsArray) {
+        this.playlistsArray = playlistsArray;
+    }
 }

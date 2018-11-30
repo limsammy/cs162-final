@@ -59,15 +59,16 @@ public class AuthSuccessController {
         }
     }
 
-    private void renderDataTable(ActionEvent e, ArrayList<Playlist> data) throws IOException {
+    private void renderDataTable(ActionEvent e, ArrayList<Playlist> playlistData) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         Parent tableViewParent = loader.load(getClass().getResource("../resources/fxml/playlists_list.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
+        PlaylistsController pc = loader.getController();
+        pc.setPlaylistsArray(playlistData);
+
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
-
         window.setResizable(false);
-
         window.setScene(tableViewScene);
         window.show();
     }
