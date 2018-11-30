@@ -9,17 +9,67 @@ import java.util.ArrayList;
  */
 public class Playlist {
     private String playlistName;
+    private String playlistId;
+    private String playlistTracksCount;
+    private String playlistUri;
     private ArrayList playlistTracks;
 
     /**
      * Constructor for playlist model
      *
-     * @param playlistName
-     * @param playlistTracks
      *
      */
-    public Playlist(String playlistName, ArrayList playlistTracks) {
+    public Playlist() {
+        this.playlistName = null;
+        this.playlistTracks = null;
+        this.playlistTracksCount = null;
+        this.playlistId = null;
+        this.playlistUri = null;
+    }
+
+    /**
+     * Getter methods for playlist instance vars
+     */
+    public String getPlaylistName() {
+        return this.playlistName;
+    }
+
+    public String getPlaylistId() {
+        return this.playlistId;
+    }
+
+    public String getPlaylistTracksCount() {
+        return this.playlistTracksCount;
+    }
+
+    public String getPlaylistUri() {
+        return this.playlistUri;
+    }
+
+    public ArrayList getPlaylistTracks() {
+        return this.playlistTracks;
+    }
+
+    /**
+     * Setter methods for playlist instance vars
+     */
+    public void setPlaylistName(String playlistName) {
         this.playlistName = playlistName;
+    }
+
+    public void setPlaylistTracks(ArrayList playlistTracks) {
         this.playlistTracks = playlistTracks;
+    }
+
+    public void setPlaylistTracksCount(String playlistTracksCount) {
+        this.playlistTracksCount = playlistTracksCount;
+    }
+
+    public void setPlaylistId(String playlistId) {
+        this.playlistId = playlistId;
+    }
+
+    public void setPlaylistUri(String playlistUri) {
+        this.playlistUri = playlistUri;
     }
 }
