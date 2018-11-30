@@ -1,7 +1,6 @@
 # README
 
-This is the official documentation for Recommendify (name still undecided), my project for CS162.
-In this application we utilize a Java wrapper for the Spotify HTTP api (found [here]())
+This is the official documentation for Recommendify (name still undecided), my project for CS162. In this application we utilize an already-written Java wrapper for the Spotify HTTP api (found [here](https://github.com/thelinmichael/spotify-web-api-java)) for our authentication, JavaFX for our frontend, and Java's built-in Properties class for maintaining state. The prime directive of this application has yet to be written.
 
 ## Table of Contents
 
@@ -38,12 +37,17 @@ After compiling the .jar, navigate to the release directory:
 cd target
 ```
 
-
+Launch the .jar file:
+```sh
+java -jar recommendify-1.0-SNAPSHOT.jar
+```
 
 ## Support
 
-Please [open an issue](https://github.com/fraction/readme-boilerplate/issues/new) for support.
+Please [open an issue](https://github.com/limsammy/cs162-final/issues) for support.
 
 ## Contributing
 
-Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
+Please contribute using the [Github Work Flow](https://guides.github.com/introduction/flow/). Create a feature branch, add commits, and then [open a pull request](https://github.com/limsammy/cs162-final/compare/).
+
+For ideas on features to write, please check out our [Github Projects](https://github.com/limsammy/cs162-final/projects/1) page which is currently tracking our progress.
