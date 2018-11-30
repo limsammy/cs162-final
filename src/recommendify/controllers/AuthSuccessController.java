@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import recommendify.helpers.SpotifyApiHelper;
+import recommendify.models.Playlist;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class AuthSuccessController {
 
     public void pressViewPlaylistsBtn(ActionEvent e) {
         System.out.println("Fetching playlists (doin lotsa magic)...");
-        HashMap<String, Object> playlists = buildPlaylistsList(spotifyService.grabPlaylists());
+        ArrayList<Playlist> playlists = buildPlaylistsList(spotifyService.grabPlaylists());
         System.out.println("# of playlists mined for data: " + playlists.size());
 
         System.out.println("Rendering playlist table view and closing other window...");
@@ -57,9 +58,9 @@ public class AuthSuccessController {
         }
     }
 
-    private void renderDataTable(ActionEvent e, HashMap<String, Object> data) throws IOException {
+    private void renderDataTable(ActionEvent e, ArrayList<Playlist> data) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        Parent tableViewParent = loader.load(getClass().getResource("../resources/playlists_list.fxml"));
+        Parent tableViewParent = loader.load(getClass().getResource("../resources/fxml/playlists_list.fxml"));
         Scene tableViewScene = new Scene(tableViewParent);
 
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -70,24 +71,24 @@ public class AuthSuccessController {
         window.show();
     }
 
-    private HashMap<String, Object> buildPlaylistsList(ArrayList<PlaylistSimplified> rawPlaylists) {
-        HashMap<String, Object> results = new HashMap<>();
+    private ArrayList<Playlist> buildPlaylistsList(ArrayList<PlaylistSimplified> rawPlaylists) {
+        ArrayList<Playlist> results = new ArrayList<>();
 
         for (PlaylistSimplified playlist : rawPlaylists) {
-            HashMap<String, Object> dataBundle = new HashMap<>();
+            Playlist playlistObj = new Playlist();
 
-            dataBundle.put("name", playlist.getName());
-            dataBundle.put("id", playlist.getId());
-            dataBundle.put("tracksList", playlist.getTracks());
-            dataBundle.put("tracksCount", playlist.getTracks().getTotal());
-            dataBundle.put("images", playlist.getImages());
-            dataBundle.put("uri", playlist.getUri());
+            playlistObj.setPlaylistName(playlist.getName());
+            playlistObj.setPlaylistId(playlist.getId());
+            playlistObj.setPlaylistUri(playlist.getUri());
+            playlistObj.setPlaylistTracksCount(playlist.getTracks().getTotal());
+//            playlistObj.setPlaylistTracks(playlist.getTracks());
+            System.out.println(playlist.getTracks());
 
-            results.put(playlist.getName(), dataBundle);
+            results.add(playlistObj);
         }
 
         System.out.println("Extracted necessary elements from playlist objects...");
-        System.out.println("Returning compiled hashmap of data!");
+        System.out.println("Returning compiled arraylist of playlist models!");
 
         return results;
     }

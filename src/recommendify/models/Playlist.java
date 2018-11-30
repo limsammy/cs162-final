@@ -10,13 +10,12 @@ import java.util.ArrayList;
 public class Playlist {
     private String playlistName;
     private String playlistId;
-    private String playlistTracksCount;
     private String playlistUri;
     private ArrayList playlistTracks;
+    private Integer playlistTracksCount;
 
     /**
      * Constructor for playlist model
-     *
      *
      */
     public Playlist() {
@@ -38,7 +37,7 @@ public class Playlist {
         return this.playlistId;
     }
 
-    public String getPlaylistTracksCount() {
+    public Integer getPlaylistTracksCount() {
         return this.playlistTracksCount;
     }
 
@@ -61,7 +60,7 @@ public class Playlist {
         this.playlistTracks = playlistTracks;
     }
 
-    public void setPlaylistTracksCount(String playlistTracksCount) {
+    public void setPlaylistTracksCount(Integer playlistTracksCount) {
         this.playlistTracksCount = playlistTracksCount;
     }
 
