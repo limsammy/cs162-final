@@ -1,4 +1,4 @@
-classes/
+out/
 config.properties
 .idea/
 build/

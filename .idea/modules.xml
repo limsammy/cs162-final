@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/recommendify-gradle.iml" filepath="$PROJECT_DIR$/recommendify-gradle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recommendify-gradle_main.iml" filepath="$PROJECT_DIR$/.idea/modules/recommendify-gradle_main.iml" group="recommendify-gradle" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/recommendify-gradle_test.iml" filepath="$PROJECT_DIR$/.idea/modules/recommendify-gradle_test.iml" group="recommendify-gradle" />
     </modules>
   </component>
 </project>
