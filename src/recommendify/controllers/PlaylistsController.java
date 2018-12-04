@@ -1,18 +1,14 @@
 package recommendify.controllers;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.util.Callback;
+import javafx.scene.control.cell.PropertyValueFactory;
 import recommendify.models.Playlist;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Controller class for Playlists List view
@@ -20,25 +16,28 @@ import java.util.Map;
  * @author Sam Lim
  */
 public class PlaylistsController {
-    private HashMap data;
     private ArrayList<Playlist> playlistsArray;
 
     @FXML
-    private TableView<Object> playlistTable;
+    private TableView<Playlist> playlistTable;
     @FXML
-    private TableColumn<Object, String> playlistCol;
+    private TableColumn<Playlist, String> playlistCol;
     @FXML
-    private TableColumn trackCtCol;
+    private TableColumn<Playlist, String> trackCtCol;
     @FXML
-    private TableColumn actionsCol;
+    private TableColumn<Playlist, String> actionsCol;
 
     @FXML
     private void initialize() {
-        populateTable(data);
+        populateTable();
     }
 
-    private void populateTable(HashMap data) {
+    private void populateTable() {
+        playlistCol.setCellValueFactory(new PropertyValueFactory<>("playlistName"));
+        trackCtCol.setCellValueFactory(new PropertyValueFactory<>("playlistTracksCount"));
 
+        ObservableList<Playlist> playlistsOL = FXCollections.observableArrayList(playlistsArray);
+        playlistTable.setItems(playlistsOL);
     }
 
     public void setPlaylistsArray(ArrayList<Playlist> playlistsArray) {
