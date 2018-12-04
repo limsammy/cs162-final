@@ -1,0 +1,5 @@
+classes/
+config.properties
+.idea/
+build/
+.gradle/
